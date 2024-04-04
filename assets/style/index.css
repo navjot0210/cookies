@@ -50,13 +50,16 @@ article p {
   border-radius: 6px;
 }
 
-.text h2 {
+h2 {
   font-size: 24px;
   font-weight: 600;
 }
 
 .text p {
   margin: 15px 0 42px;
+}
+
+.text p, .settings p {
   font-size: 17px;
   font-weight: 500;
 }
@@ -91,4 +94,8 @@ button {
   background-color: #3c57ff;
   color: #fff;
   border: 1px solid #3c57ff;
+}
+
+.button-save {
+  width: 160px;
 }
