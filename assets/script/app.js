@@ -1,19 +1,17 @@
 'use strict';
 
-import * as utils from './utils.js';
+const dialogOne = document.querySelector('#dialog-one');
+const dialogTwo = document.querySelector('#dialog-two');
 
-const dialogOne = select('#dialog-one');
-const dialogTwo = select('#dialog-two');
+const accept = document.querySelector('#button-accept');
+const settings = document.querySelector('#button-settings');
+const preferences = document.querySelector('#button-save');
 
-const accept = select('#button-accept');
-const settings = select('#button-settings');
-const preferences = select('#button-save');
-
-const cookieOne = select('.cookie-one');
-const cookieTwo = select('.cookie-two');
-const cookieThree = select('.cookie-three');
-const cookieFour = select('.cookie-four');
-const overlay = select('.overlay')
+const cookieOne = document.querySelector('.cookie-one');
+const cookieTwo = document.querySelector('.cookie-two');
+const cookieThree = document.querySelector('.cookie-three');
+const cookieFour = document.querySelector('.cookie-four');
+const overlay = document.querySelector('.overlay')
 
 const LIFETIME = 15;
 
