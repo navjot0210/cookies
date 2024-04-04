@@ -34,8 +34,8 @@ function checkCookie() {
 function createCookie() {
   setCookie('Browser', cookieOne.checked ? checkBrowser() : 'rejected', 15);
   setCookie('OS', cookieTwo.checked ? checkOS() : 'rejected', 15);
-  setCookie('width', cookieThree.checked ? screen.width : 'rejected', 15);
-  setCookie('height', cookieFour.checked ? screen.height : 'rejected', 15);
+  setCookie('width', cookieThree.checked ? checkWindowWidth() : 'rejected', 15);
+  setCookie('height', cookieFour.checked ? checkWindowHeight() : 'rejected', 15);
 }
 
 function setCookie(name, value, maxAge) {
