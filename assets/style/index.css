@@ -11,14 +11,15 @@ body {
   margin-inline: auto;
 }
 
-/* .center {
+.center {
   display: grid;
   place-items: center;
-} */
+}
 
-/* ------------------------------------ */
-/* Text                                 */
-/* ------------------------------------ */
+
+/* ----------------------------------------- */
+/* Text                                      */
+/* ----------------------------------------- */
 article p {
   font-size: 42px;
   font-weight: 600;
@@ -35,4 +36,46 @@ article p {
 
 .green {
   color: rgb(39, 146, 12);
+}
+
+
+/* ----------------------------------------- */
+/* Dialog-one                                */
+/* ----------------------------------------- */
+.dialog {
+  padding: 20px;
+  width: 320px;
+  height: 305px;
+  background-color: #f3f7fa;
+  border-radius: 6px;
+}
+
+.text h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.text p {
+  margin: 15px 0 42px;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+button {
+  width: 90px;
+  height: 38px;
+  border-radius: 50px;
+  padding-bottom: 3px;
+  font-weight: 600;
+  border: 1px solid #3c57ff;
+}
+
+.button-accept, .button-save {
+  background-color: #3c57ff;
+  color: #fff;
+}
+
+.button-settings {
+  background-color: #fff;
+  color: #3c57ff;
 }
