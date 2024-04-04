@@ -1,2 +1,38 @@
 @charset "utf-8";
 
+body {
+  background-color: rgb(23 24 32);
+  display: grid;
+  place-items: center;
+}
+
+.container {
+  width: min(100% - 30px, 1080px);
+  margin-inline: auto;
+}
+
+/* .center {
+  display: grid;
+  place-items: center;
+} */
+
+/* ------------------------------------ */
+/* Text                                 */
+/* ------------------------------------ */
+article p {
+  font-size: 42px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.purple {
+  color: #90f;
+}
+
+.orange {
+  color: #f90;
+}
+
+.green {
+  color: rgb(39, 146, 12);
+}
