@@ -68,6 +68,8 @@ button {
   padding-bottom: 3px;
   font-weight: 600;
   border: 1px solid #3c57ff;
+  cursor: pointer;
+  transform: all 0.25s ease-in-out;
 }
 
 .button-accept, .button-save {
@@ -78,4 +80,15 @@ button {
 .button-settings {
   background-color: #fff;
   color: #3c57ff;
+}
+
+.button-accept:hover, .button-save:hover {
+  background-color: #4d64f8;
+  border: 1px solid #4d64f8;
+}
+
+.button-settings:hover {
+  background-color: #3c57ff;
+  color: #fff;
+  border: 1px solid #3c57ff;
 }
