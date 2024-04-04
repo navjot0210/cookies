@@ -16,6 +16,12 @@ body {
   place-items: center;
 }
 
+/* main {
+  display: grid;
+  place-items: center;
+  justify-content: center;
+} */
+
 
 /* ----------------------------------------- */
 /* Text                                      */
@@ -40,14 +46,46 @@ article p {
 
 
 /* ----------------------------------------- */
-/* Dialog-one                                */
+/* Dialogs                                   */
 /* ----------------------------------------- */
 .dialog {
+  position: fixed;
   padding: 20px;
   width: 320px;
   height: 305px;
   background-color: #f3f7fa;
   border-radius: 6px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  user-select: none; 
+  animation: 0.25s linear anim;
+  z-index: 1;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.overlay.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+@keyframes anim {
+  from {
+    opacity: 0;
+    translate: 0 -8px;
+  } to {
+    opacity: 1;
+    translate: 0 0;
+  }
 }
 
 h2 {
@@ -72,7 +110,7 @@ button {
   font-weight: 600;
   border: 1px solid #3c57ff;
   cursor: pointer;
-  transform: all 0.25s ease-in-out;
+  /* transform: all 0.25s ease-in-out; */
 }
 
 .button-accept, .button-save {
@@ -97,5 +135,105 @@ button {
 }
 
 .button-save {
+  margin-top: 20px;
   width: 160px;
 }
+
+.cookie-one, .cookie-two, .cookie-three, .cookie-four {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+label {
+  margin-left: 12px;
+}
+
+.dialog-one, .dialog-two {
+  visibility: hidden;
+}
+
+.dialog-one.visible {
+  visibility: visible;
+}
+
+.dialog-two.visible {
+  visibility: visible;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  /* display: inline-block; */
+  width: 40px;
+  height: 20px;
+  /* top: 38px; */
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #b9b9b9;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #5840de;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #7561e4;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 10px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+} 
+
+/* p {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  padding: 34px 12px 0;
+} */
+
+
+/* .glow {
+  border: 2px solid red;
+  box-shadow: 0 0 5px red;
+} */
