@@ -1,21 +1,24 @@
 'use strict';
 
-const dialogOne = document.querySelector('#dialog-one');
-const dialogTwo = document.querySelector('#dialog-two');
+import * as utils from './utils.js';
 
-const accept = document.querySelector('#button-accept');
-const settings = document.querySelector('#button-settings');
-const preferences = document.querySelector('#button-save');
+const dialogOne = select('#dialog-one');
+const dialogTwo = select('#dialog-two');
 
-const cookieOne = document.querySelector('.browser');
-const cookieTwo = document.querySelector('.system');
-const cookieThree = document.querySelector('.width');
-const cookieFour = document.querySelector('.height');
-const overlay = document.querySelector('.overlay')
+const accept = select('#button-accept');
+const settings = select('#button-settings');
+const preferences = select('#button-save');
+
+const cookieOne = select('.cookie-one');
+const cookieTwo = select('.cookie-two');
+const cookieThree = select('.cookie-three');
+const cookieFour = select('.cookie-four');
+const overlay = select('.overlay')
 
 const LIFETIME = 15;
 
-window.addEventListener('load', () => {
+
+function checkCookie() {
   if (navigator.cookieEnabled) {
     if (!document.cookie) {
       console.log(`Cookies not found`);
@@ -24,30 +27,17 @@ window.addEventListener('load', () => {
         overlay.classList.add('visible');
       }, 1000);
     } else {
-      const cookies = ['Browser', 'Operating system', 'Screen width', 'Screen height'];
+      const cookies = ['Browser', 'OS', 'width', 'height'];
       cookies.forEach(cookie => getCookie(cookie));
     }
   }
-});
-
-// function createCookie() {
-//   setCookie('Browser', cookieOne.checked ? checkBrowser() : 'rejected', 15);
-//   setCookie('Operating system', cookieTwo.checked ? checkOS() : 'rejected', 15);
-//   setCookie('Screen width', cookieThree.checked ? screen.width : 'rejected', 15);
-//   setCookie('Screen height', cookieFour.checked ? screen.height : 'rejected', 15);
-// }
+}
 
 function createCookie() {
   setCookie('Browser', cookieOne.checked ? checkBrowser() : 'rejected', 15);
-  setCookie('Operating system', cookieTwo.checked ? checkOS() : 'rejected', 15);
-  setCookie('Screen width', cookieThree.checked ? screen.width : 'rejected', 15);
-  setCookie('Screen height', cookieFour.checked ? screen.height : 'rejected', 15);
-
-  // Update UI to reflect selected options or 'rejected' values
-  cookieOne.textContent = cookieOne.checked ? checkBrowser() : 'rejected';
-  cookieTwo.textContent = cookieTwo.checked ? checkOS() : 'rejected';
-  cookieThree.textContent = cookieThree.checked ? checkWindowWidth() : 'rejected';
-  cookieFour.textContent = cookieFour.checked ? checkWindowHeight() : 'rejected';
+  setCookie('OS', cookieTwo.checked ? checkOS() : 'rejected', 15);
+  setCookie('width', cookieThree.checked ? screen.width : 'rejected', 15);
+  setCookie('height', cookieFour.checked ? screen.height : 'rejected', 15);
 }
 
 function setCookie(name, value, maxAge) {
@@ -57,20 +47,18 @@ function setCookie(name, value, maxAge) {
   };
   maxAge = LIFETIME;
   document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; max-age=${maxAge}; path=${options.path}; SameSite=${options.SameSite}`;
-  // const decodedCookies = decodeURIComponent(document.cookie);
 }
 
-
-function getCookie(cookieName) {
-  const name = cookieName + '=';
+function getCookie(cookie) {
+  const name = cookie + '=';
   const decodedCookies = decodeURIComponent(document.cookie);
   const matches = decodedCookies.match(new RegExp(name + '([^;]+)'));
   if (matches) {
-      console.log(matches[1]);
-      return matches[1];
+      console.log(cookie + ': ' + matches[1]);
+      return { name: cookie, value: matches[1] };
   } else {
-      console.log('Cookie not found');
-      return '';
+      console.log(`Cookie ${cookie} not found`);
+      return null;
   }
 }
 
@@ -92,20 +80,24 @@ function checkOS() {
 }
 
 function checkWindowWidth() {
-  return window.innerWidth;
+  return `${window.innerWidth}px`;
 }
 
 function checkWindowHeight() {
-  return window.innerHeight;
+  return `${window.innerHeight}px`;
 }
+
+window.addEventListener('load', () => {
+  checkCookie();
+});
 
 accept.addEventListener('click', function() {
   dialogOne.classList.remove('visible');
   overlay.classList.remove('visible');
   setCookie('Browser', `${checkBrowser()}`, 15);
-  setCookie('Operating system', `${checkOS()}`, 15);
-  setCookie('Screen width', `${checkWindowWidth()}`, 15);
-  setCookie('Screen height', `${checkWindowHeight()}`, 15);
+  setCookie('OS', `${checkOS()}`, 15);
+  setCookie('width', `${checkWindowWidth()}`, 15);
+  setCookie('height', `${checkWindowHeight()}`, 15);
 })
 
 settings.addEventListener('click', function() {

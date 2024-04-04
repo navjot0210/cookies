@@ -139,7 +139,7 @@ button {
   width: 160px;
 }
 
-.cookie-one, .cookie-two, .cookie-three, .cookie-four {
+.one, .two, .three, .four {
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
@@ -224,16 +224,3 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 } 
-
-/* p {
-  color: #fff;
-  font-size: 24px;
-  font-weight: 600;
-  padding: 34px 12px 0;
-} */
-
-
-/* .glow {
-  border: 2px solid red;
-  box-shadow: 0 0 5px red;
-} */
